@@ -1,4 +1,3 @@
-import { initialCards } from "../scripts/cards.js";
 import { openImagePopup } from "../scripts/index.js";
 
 // @todo: Функция создания карточки
@@ -29,21 +28,7 @@ export function deleteCard(cardElement) {
   cardElement.remove();
 }
 
-// @todo: Вывести карточки на страницу
-export function displayCards() {
-  const cardsContainer = document.querySelector(".places__list");
-
-  for (const cardData of initialCards) {
-    const card = createCard(cardData, deleteCard, openImagePopup, likeCard);
-    cardsContainer.append(card);
-  }
-}
-
 // Функция обработки лайка
 export function likeCard(likeButton) {
-  if (likeButton.classList.contains("card__like-button_is-active")) {
-    likeButton.classList.remove("card__like-button_is-active");
-  } else {
-    likeButton.classList.add("card__like-button_is-active");
-  }
+  likeButton.classList.toggle("card__like-button_is-active");
 }
