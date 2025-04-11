@@ -53,6 +53,10 @@ const isValid = (formElement, inputElement, settings) => {
   }
 };
 
+const addInactiveButtenClass = (element, settings) => {
+  element.classList.add(settings.inactiveButtonClass);
+};
+
 // Переключение состояния кнопки
 const hasInvalidInput = (inputList) => {
   return inputList.some((inputElement) => {
@@ -62,7 +66,7 @@ const hasInvalidInput = (inputList) => {
 const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.disabled = true;
-    buttonElement.classList.add(settings.inactiveButtonClass);
+    addInactiveButtenClass(buttonElement, settings);
   } else {
     buttonElement.disabled = false;
     buttonElement.classList.remove(settings.inactiveButtonClass);
@@ -107,8 +111,7 @@ export const clearValidation = (profileForm, settings) => {
   );
   inputList.forEach((inputElement) => {
     hideInputError(profileForm, inputElement, settings);
-    inputElement.value = "";
   });
-  buttonElement.classList.add(settings.inactiveButtonClass);
+  addInactiveButtenClass(buttonElement, settings);
   buttonElement.disabled = true;
 };

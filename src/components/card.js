@@ -1,4 +1,3 @@
-import { openImagePopup } from "../scripts/index.js";
 import {likeCardApi, unlikeCard, deleteCardApi} from "./api.js"
 
 // @todo: Функция создания карточки
@@ -27,8 +26,8 @@ export function createCard(cardData, deleteCard, openImagePopup, likeCard, userI
   const isLiked = cardData.likes.some(like => like._id === userId);
   if (isLiked)  {
     likeButton.classList.add("card__like-button_is-active");
-    likesCard.textContent = cardData.likes.length;
   }
+  likesCard.textContent = cardData.likes.length;
   likeButton.addEventListener("click", () => likeCard(likeButton, cardData._id, likesCard));
 
   return cardElement;
